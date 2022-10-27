@@ -1,0 +1,23 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+.wrapper {
+    width: 135.1rem;
+    margin: 0 auto
+}
+
+@import './scss/components/header';
+@import './scss/components/wrapper-slide';
+@import './scss/components/featured-products';
+@import './scss/components/popular-products';
+@import './scss/components/daily-sells';
+@import './scss/components/deals-day';
+@import './scss/components/top-products';
+@import './scss/components/pagination'
