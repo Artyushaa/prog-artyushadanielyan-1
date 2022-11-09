@@ -1,0 +1,15 @@
+{
+  "name": "day-92",
+  "version": "1.0.0",
+  "description": "",
+  "main": "closure-problems.test.js",
+  "scripts": {
+    "test": "jest --watchAll --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.3.0"
+  }
+}
