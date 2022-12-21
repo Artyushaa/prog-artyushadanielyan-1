@@ -86,9 +86,10 @@ export default function filterProductCart() {
 
         let filterProduct = categories ? categories.map((e) => {
             let categoryId = e.categoryId
-            return <div key={e._id} className="filter-product__name-container"><p className="filter-product__name">{e.descriptions[0].name}</p><input type="radio" name="radio" onClick={() => {
-                handleFilterClick(categoryId)
-            }} className="filter-product__radio" /></div>
+            return <div key={e._id} className="filter-product__name-container">
+                <p className="filter-product__name">{e.descriptions[0].name}</p><input type="radio" name="radio" onClick={() => {
+                    handleFilterClick(categoryId)
+                }} className="filter-product__radio" /></div>
         }) : 'a'
         return filterProduct
     }
@@ -104,13 +105,12 @@ export default function filterProductCart() {
 
     return (
         <>
-            <div className="filter-product__name-container">
-                <p className="filter-product__name">All</p>
-                <input type="radio" name="radio" onClick={handleClick} className="filter-product__radio" />
-            </div>
-
             <div className="filter-product__container">
                 <div className="filter-product">
+                    <div className="filter-product__name-container">
+                        <p className="filter-product__name">All</p>
+                        <input type="radio" name="radio" onClick={handleClick} className="filter-product__radio" />
+                    </div>
                     {filterProductState}
                 </div>
                 <div className="filter-product__cart-container">

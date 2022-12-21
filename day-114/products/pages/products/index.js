@@ -65,6 +65,7 @@ export async function getStaticProps() {
 
     const res = await fetch("https://420.canamaster.net/api/v1/products/popular/1/10", requestOptions)
     let result = await res.json()
+    console.log(result,'productyNkarvac');
     let products = result.products
     let newArray = []
     for (let i = 0; i < products.length; i++) {
