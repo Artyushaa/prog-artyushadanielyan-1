@@ -15,38 +15,40 @@ export default function Products({ products }) {
     }
 
 
-    let productsCard = products.map((product) => {
-        return <div key={product.id} className="popular-products_container">
-            <img src={product.url} alt="" className="popular-products__pictured" />
-            <Link className='popular-products__description-dish' href={`/products/${product.id}`}>{product.name}</Link>
-            <div className="popular-products__fa-star-container">
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-            </div>
-            <div className="popular-products__price-add-container">
-                <div className="popular-products__price">
-                    <span className="popular-products--color-green">{product.price + "$"}</span>
-                </div>
-                <button onClick={() => {
-                    if (addProductState[product.id]) {
-                        dispatch(saveStateProduct())
-                        dispatch(addProductAndEnlargeQuantity({ quantity: quantityIncrementState, id: addProductState[product.id] }))
-                    } else {
-                        handleClickAddToCart(product.id)
-                    } 
-                }} className="popular-products__add-btn"><i className="fa-solid fa-cart-shopping"></i>Add</button>
-            </div>
-        </div>
-    })
+   
 
 
     return (
         <>
             <div className="popular-products">
-                {productsCard}
+                {
+                     products.map((product) => {
+                        return <div key={product.id} className="popular-products_container">
+                            <img src={product.url} alt="" className="popular-products__pictured" />
+                            <Link className='popular-products__description-dish' href={`/products/${product.id}`}>{product.name}</Link>
+                            <div className="popular-products__fa-star-container">
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                            </div>
+                            <div className="popular-products__price-add-container">
+                                <div className="popular-products__price">
+                                    <span className="popular-products--color-green">{product.price + "$"}</span>
+                                </div>
+                                <button onClick={() => {
+                                    if (addProductState[product.id]) {
+                                        dispatch(saveStateProduct())
+                                        dispatch(addProductAndEnlargeQuantity({ quantity: quantityIncrementState, id: addProductState[product.id] }))
+                                    } else {
+                                        handleClickAddToCart(product.id)
+                                    } 
+                                }} className="popular-products__add-btn"><i className="fa-solid fa-cart-shopping"></i>Add</button>
+                            </div>
+                        </div>
+                    })
+                }
             </div>
         </>
     )

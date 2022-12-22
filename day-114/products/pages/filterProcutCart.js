@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react";
 import { addProductInShoppingCart, saveStateProduct } from "../features/addCart/shopingCartSlice";
 import Link from "next/link";
-import { wrapper } from "../app/store";
 import { setCategoryId } from '../features/product-filter/productFilterSlice'
 
 export default function filterProductCart() {

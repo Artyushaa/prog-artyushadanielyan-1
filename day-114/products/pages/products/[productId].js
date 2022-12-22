@@ -4,11 +4,9 @@ export default function PopularProductItem({ product }) {
 
     return (
         <>
-            {/* <div className="popular-product-item"> */}
             <img src={product.image} className="popular-product-item__pictured" />
             <p>{product.name}</p>
             <p>{product.price}</p>
-            {/* </div> */}
         </>
     )
 }

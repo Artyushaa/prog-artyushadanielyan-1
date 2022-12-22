@@ -6,7 +6,7 @@ export function DropDownHome(props) {
     return (
         <>
             <div className={classname}>
-                <DropDownText dropDownText='Home 1' />
+                <DropDownText dropDownText={<Link href="/products">Home 1</Link>} />
                 <DropDownText dropDownText='Home 2' />
                 <DropDownText dropDownText='Home 3' />
                 <DropDownText dropDownText='Home 4' />

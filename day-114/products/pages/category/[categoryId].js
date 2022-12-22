@@ -1,5 +1,4 @@
 import { wrapper } from "../../app/store";
-import { getFilterProducts } from "../../features/product-filter/productFilterSlice";
 
 export default function categoryProduct(props) {
     return (

@@ -1,15 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import transformationData from "../../pages/transformationData";
+import transformCartItemData from "../../pages/transformCartItem";
 
 const initialState = {
     product: [],
     shopingCartData: [],
     quantity: 1,
     addProductData: {},
-    quantityIncrement: 2,
     addProductAndEnlargeQuantity: 0,
     shopingCartItemMap: {},
-    // getShopingCartData: []
 }
 
 export const getShopingCartData = createAsyncThunk(
@@ -26,7 +24,9 @@ export const getShopingCartData = createAsyncThunk(
         });
 
         let res = await response.json();
-        let data = transformationData(res.data)
+        let data = res.data.map((cartItem) => {
+            return transformCartItemData(cartItem)
+        })
         return data
     }
 )
@@ -50,17 +50,17 @@ export const addProductInShoppingCart = createAsyncThunk(
         });
 
         let resData = await response.json();
-        // console.log(resData,'resData');
-        // let resultData = transformationData([resData]);
-        // console.log(resultData,'resultData');
-        console.log(resData,'resdata');
-        return resData
+        let resultData = transformCartItemData(resData);
+        return resultData
     }
 )
 
-export const quantityProduct = createAsyncThunk(
-    'addProduct/cuantityProduct',
+export const changeProductQuantity = createAsyncThunk(
+    'addProduct/changeProductQuantity',
     async (data, { rejectWithValue, dispatch }) => {
+
+        console.log('data: ', data);
+
         let addItem = {
             "quantity": data.quantity,
             "cartId": data.id
@@ -78,7 +78,7 @@ export const quantityProduct = createAsyncThunk(
         });
 
         let resData = await response.json();
-        let resultData = transformationData([resData])
+        let resultData = transformCartItemData(resData)
         return resultData
     }
 )
@@ -138,10 +138,11 @@ const addProduct = createSlice({
             .addCase(getProduct1.fulfilled, (state, action) => {
                 state.product = action.payload
             })
-            .addCase(quantityProduct.pending, (state) => {
+            .addCase(changeProductQuantity.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(quantityProduct.fulfilled, (state, action) => {
+            .addCase(changeProductQuantity.fulfilled, (state, action) => {
+                // debugger
                 state.shopingCartItemMap[action.payload.cartId] = action.payload
             })
             .addCase(getShopingCartData.fulfilled, (state, action) => {
