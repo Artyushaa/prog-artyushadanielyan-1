@@ -22,13 +22,14 @@ export default function ShopingCart() {
     const shopingCartItemMapState = useSelector((state) => state.addCart.shopingCartItemMap)
     const getShopingCartDataState = useSelector((state) => state.addCart.getShopingCartData)
 
+    console.log(shopingCartItemMapState,'shopingCartItemMapState');
+
     function shopingCartQuantity(id) {
         return shopingCartItemMapState[id].quantity
     }
 
 
     let data = Object.values(shopingCartItemMapState).map(el => {
-        console.log(el,'price');
         return <div className="shoppingCard">
             <input type="checkbox" />
             <div className="shoppingCard__pictured-container">
@@ -39,14 +40,14 @@ export default function ShopingCart() {
                 <div className="shoppingCard__purchase-information">
                     <p className="shoppingCard__price">${el.price}</p>
                     <input type="number"
-                        value={shopingCartQuantity(el.cartId)}
+                        value={shopingCartQuantity(el.productId)}
                         className="shoppingCard__quantity"
                         onChange={(e) => {
                             handleProductAmountChange({ quantity: e.target.value, id: el.cartId })
                         }} />
 
                     <p className="shoppingCard__price-subtotal">${
-                        shopingCartQuantity(el.cartId) * el.price
+                        shopingCartQuantity(el.productId) * el.price
                     }</p>
 
                     <button onClick={() => {

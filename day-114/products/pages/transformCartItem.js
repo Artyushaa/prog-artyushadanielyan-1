@@ -6,6 +6,6 @@ export default function transformCartItemData(data) {
         image: `https://420.canamaster.net/media/image/d/350/${data?.product?.imageMain[0]?.image?.url}`,
         quantity: data.quantity,
         cartId: data.cartId,
-        productId: data.productIdF,
+        productId: data.productId,
     }
 }
