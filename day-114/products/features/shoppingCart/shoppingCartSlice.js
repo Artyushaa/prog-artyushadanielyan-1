@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import transformCartItemData from "../../pages/transformCartItem";
+import asyncRequestDeleteCart from "./shoppingCartAPI";
 
 const initialState = {
     saveDeleteCartId: [],
@@ -9,17 +10,19 @@ const initialState = {
 export const deleteCart = createAsyncThunk(
     'shoppingCart/deleteCart',
     async (cartId, { rejectWithValue, dispatch }) => {
-        let token = localStorage.getItem('token')
-        var myHeaders = new Headers();
-        myHeaders.append("Cookie", "session=s%3A2Uga7S3EoPMYFYSp28DXkkA8S8uw8wBy.9Qc2KwSU7gSmH49cu2juNVNRZqvxgD4fqosITwnAgqQ");
-        myHeaders.append("Authorization", `Bearer ${token}`);
-        let res = fetch(`https://420.canamaster.net/cart/rest/${cartId}`, {
-            method: 'DELETE',
-            headers: myHeaders,
-            body: JSON.stringify(cartId),
-            redirect: 'follow'
-        })
-        let result = await res.json()
+        // let token = localStorage.getItem('token')
+        // var myHeaders = new Headers();
+        // myHeaders.append("Cookie", "session=s%3A2Uga7S3EoPMYFYSp28DXkkA8S8uw8wBy.9Qc2KwSU7gSmH49cu2juNVNRZqvxgD4fqosITwnAgqQ");
+        // myHeaders.append("Authorization", `Bearer ${token}`);
+        // let res = await fetch(`https://420.canamaster.net/cart/rest/${cartId}`, {
+        //     method: 'DELETE',
+        //     headers: myHeaders,
+        //     body: JSON.stringify(cartId),
+        //     redirect: 'follow'
+        // })
+        // let result = await res.json()
+        // return result
+        let result = asyncRequestDeleteCart("https://420.canamaster.net/cart/rest", cartId)
         return result
     }
 )
