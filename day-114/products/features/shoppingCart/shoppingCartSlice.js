@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import transformCartItemData from "../../pages/transformCartItem";
-import { asyncRequestDeleteCart } from "./shoppingCartAPI";
+import { addProductItemInShoppingCart, DeleteCartItem, getShoppingCartDataRequest } from "./shoppingCartAPI";
 
 const initialState = {
     saveDeleteCartId: [],
@@ -10,7 +10,7 @@ const initialState = {
 export const deleteCart = createAsyncThunk(
     'shoppingCart/deleteCart',
     async (cartId, { rejectWithValue, dispatch }) => {
-        let result = asyncRequestDeleteCart("https://420.canamaster.net/cart/rest", cartId)
+        let result = DeleteCartItem(cartId)
         return result
     }
 )
@@ -18,45 +18,21 @@ export const deleteCart = createAsyncThunk(
 export const getShoppingCartData = createAsyncThunk(
     'shoppingCart/shoppingCartData',
     async (_, { rejectWithValue, dispatch }) => {
-        let token = localStorage.getItem('token')
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${token}`)
-
-        let response = await fetch("https://420.canamaster.net/cart/rest/1/100", {
-            method: "GET",
-            headers: myHeaders,
-        });
-
-        let res = await response.json();
-        let data = res.data.map((cartItem) => {
-            return transformCartItemData(cartItem)
+        let result = getShoppingCartDataRequest();
+        return result.then(response => {
+            return response.data
         })
-        return data
     }
 )
 
 export const addProductInShoppingCart = createAsyncThunk(
     "shoppingCart/addProductInShoppingCart",
     async (id, { rejectWithValue, dispatch }) => {
-        let addItem = {
-            "quantity": 1,
-            "productId": id
-        };
-        let token = localStorage.getItem('token')
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${token}`)
-        let response = await fetch("https://420.canamaster.net/cart/rest/", {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify(addItem),
-            redirect: "follow"
-        });
-
-        let resData = await response.json();
-        let resultData = transformCartItemData(resData);
-        return resultData
+        let data = addProductItemInShoppingCart(id)
+        console.log(data,'data');
+        return data.then(response => {
+            return response.data
+        })
     }
 )
 
