@@ -3,11 +3,11 @@ import transformCartItemData from "../../pages/transformCartItem";
 
 const initialState = {
     saveDeleteCartId: [],
-    shopingCartItemMap: {},
+    shoppingCartItemMap: {},
 }
 
 export const deleteCart = createAsyncThunk(
-    'shopingCart/deleteCart',
+    'shoppingCart/deleteCart',
     async (cartId, { rejectWithValue, dispatch }) => {
         let token = localStorage.getItem('token')
         var myHeaders = new Headers();
@@ -24,8 +24,8 @@ export const deleteCart = createAsyncThunk(
     }
 )
 
-export const getShopingCartData = createAsyncThunk(
-    'shopingCart/shopingCartData',
+export const getShoppingCartData = createAsyncThunk(
+    'shoppingCart/shoppingCartData',
     async (_, { rejectWithValue, dispatch }) => {
         let token = localStorage.getItem('token')
         const myHeaders = new Headers();
@@ -46,7 +46,7 @@ export const getShopingCartData = createAsyncThunk(
 )
 
 export const addProductInShoppingCart = createAsyncThunk(
-    "shopingCart/addProductInShoppingCart",
+    "shoppingCart/addProductInShoppingCart",
     async (id, { rejectWithValue, dispatch }) => {
         let addItem = {
             "quantity": 1,
@@ -70,7 +70,7 @@ export const addProductInShoppingCart = createAsyncThunk(
 )
 
 export const changeProductQuantity = createAsyncThunk(
-    'shopingCart/changeProductQuantity',
+    'shoppingCart/changeProductQuantity',
     async (data, { rejectWithValue, dispatch }) => {
         let addItem = {
             "quantity": data.quantity,
@@ -102,7 +102,7 @@ export const changeProductQuantity = createAsyncThunk(
 )
 
 export const addProductAndEnlargeQuantity = createAsyncThunk(
-    'shopingCart/addProductAndEnlargeQuantity',
+    'shoppingCart/addProductAndEnlargeQuantity',
     async (data, { rejectWithValue, dispatch }) => {
         console.log(data, 'data');
         let addItem = {
@@ -135,7 +135,7 @@ export const addProductAndEnlargeQuantity = createAsyncThunk(
 )
 
 export const getProduct1 = createAsyncThunk(
-    'shopingCart/getProduct1',
+    'shoppingCart/getProduct1',
     async (_, { rejectWithValue, dispatch }) => {
         let res = await fetch('https://420.canamaster.net/api/v1/products/category/new/0/1/30?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[]&&brandIds=[]');
         let result = await res.json();
@@ -143,8 +143,8 @@ export const getProduct1 = createAsyncThunk(
     }
 )
 
-const shopingCartReducer = createSlice({
-    name: 'shopingCart',
+const shoppingCartReducer = createSlice({
+    name: 'shoppingCart',
     initialState,
     reducers: {
 
@@ -172,27 +172,27 @@ const shopingCartReducer = createSlice({
             })
             .addCase(changeProductQuantity.fulfilled, (state, action) => {
                 console.log(action.payload, 'action');
-                state.shopingCartItemMap[action.payload.productId] = action.payload
+                state.shoppingCartItemMap[action.payload.productId] = action.payload
                 state.status = 'ok'
             })
-            .addCase(getShopingCartData.fulfilled, (state, action) => {
+            .addCase(getShoppingCartData.fulfilled, (state, action) => {
                 action.payload.forEach((cartItem, index) => {
-                    state.shopingCartItemMap[cartItem.productId] = action.payload[index]
+                    state.shoppingCartItemMap[cartItem.productId] = action.payload[index]
                 })
                 state.status = 'ok'
             })
             .addCase(addProductAndEnlargeQuantity.fulfilled, (state, action) => {
-                state.shopingCartItemMap[action.payload.productId] = action.payload
+                state.shoppingCartItemMap[action.payload.productId] = action.payload
                 state.status = 'ok'
             })
             .addCase(addProductInShoppingCart.fulfilled, (state, action) => {
-                state.shopingCartItemMap[action.payload.productId] = action.payload
+                state.shoppingCartItemMap[action.payload.productId] = action.payload
                 state.status = 'ok'
             })
     },
 })
 
 
-export const { addToCart, saveStateProduct, shopingCartData } = shopingCartReducer.actions;
-export default shopingCartReducer.reducer;
+export const { addToCart, saveStateProduct, shoppingCartData } = shoppingCartReducer.actions;
+export default shoppingCartReducer.reducer;
 

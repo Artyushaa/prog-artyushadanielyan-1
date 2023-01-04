@@ -1,20 +1,19 @@
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductInShoppingCart, addProductAndEnlargeQuantity } from '../../features/shopingCart/shopingCartSlice';
+import { addProductInShoppingCart, addProductAndEnlargeQuantity } from '../../features/shoppingCart/shoppingCartSlice';
 
 export default function Products({ products }) {
 
     const dispatch = useDispatch();
 
-    const shopingCartItemMapState = useSelector((state) => state.shopingCartState.shopingCartItemMap)
-    console.log(shopingCartItemMapState,'shopingcart');
+    const shoppingCartItemMapState = useSelector((state) => state.shoppingCart.shoppingCartItemMap)
 
     function handleClickAddToCart(productId) {
         dispatch(addProductInShoppingCart(productId))
     }
 
-    function shopingCartQuantity(id) {
-        return shopingCartItemMapState[id]?.quantity + 1
+    function shoppingCartQuantity(id) {
+        return shoppingCartItemMapState[id]?.quantity + 1
     }
 
 
@@ -38,8 +37,8 @@ export default function Products({ products }) {
                                     <span className="popular-products--color-green">{product.price + "$"}</span>
                                 </div>
                                 <button disabled={false} onClick={() => {
-                                    if (shopingCartItemMapState[product.productId]) {
-                                        dispatch(addProductAndEnlargeQuantity({ quantity: shopingCartQuantity(product?.productId), id: shopingCartItemMapState[product.productId] }))
+                                    if (shoppingCartItemMapState[product.productId]) {
+                                        dispatch(addProductAndEnlargeQuantity({ quantity: shoppingCartQuantity(product?.productId), id: shoppingCartItemMapState[product.productId] }))
                                     } else {
                                         handleClickAddToCart(product?.productId)
                                     }

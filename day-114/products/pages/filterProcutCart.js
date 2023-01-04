@@ -2,15 +2,12 @@ import { getFilterProducts, getPageInation } from "../features/product-filter/pr
 import { filterProduct } from "../features/product-filter/productFilterSlice";
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react";
-import { addProductInShoppingCart } from "../features/shopingCart/shopingCartSlice";
+import { addProductInShoppingCart } from "../features/shoppingCart/shoppingCartSlice";
 import Link from "next/link";
 import { setCategoryId } from '../features/product-filter/productFilterSlice'
 
 export default function filterProductCart() {
-
-    function handleClickAddToCart(productId) {
-        dispatch(addProductInShoppingCart(productId))
-    }
+    const dispatch = useDispatch();
 
     function handlePageClick(page) {
         dispatch(getPageInation(page))
@@ -25,10 +22,8 @@ export default function filterProductCart() {
         dispatch(getFilterProducts(categoryId))
     }
 
-    const dispatch = useDispatch();
     let filterProductState = useSelector((state) => state.filter.filterProduct);
     let getFilterProductsState = useSelector((state) => state.filter.getFilterProducts);
-    let getProductState = useSelector((state) => state.shopingCartState.product);
 
     let getFilterProductsData = getFilterProductsState.map((e) => {
         return <div key={e._id} className="filter-product__cart">
@@ -53,29 +48,6 @@ export default function filterProductCart() {
             </div>
         </div>
     })
-
-
-    let cartItem = getProductState ? getProductState.map((e) => {
-        return <div key={e._id} className="popular-products_container">
-            <img src={"https://420.canamaster.net/media/image/d/350/".concat(e.imageMain[0]?.image?.url)} alt="" className="popular-products__pictured" />
-            <Link className='popular-products__description-dish' href={`/${e._id}`}>{e.descriptions[0].name}</Link>
-            <div className="popular-products__fa-star-container">
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-                <i className="fa-solid fa-star"></i>
-            </div>
-            <div className="popular-products__price-add-container">
-                <div className="popular-products__price">
-                    <span className="popular-products--color-green">{e.price + "$"}</span>
-                </div>
-                <button onClick={() => {
-                    handleClickAddToCart(e.productId)
-                }} className="popular-products__add-btn"><i className="fa-solid fa-cart-shopping"></i>Add</button>
-            </div>
-        </div>
-    }) : 0
 
 
     async function filterData() {
@@ -114,9 +86,6 @@ export default function filterProductCart() {
                 </div>
                 <div className="filter-product__cart-container">
                     {getFilterProductsData}
-                </div>
-                <div className="popular-products">
-                    {cartItem}
                 </div>
             </div>
             <div className="page-ination">

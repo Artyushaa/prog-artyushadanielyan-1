@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeProductQuantity } from '../features/shopingCart/shopingCartSlice';
-import { deleteCart } from '../features/shopingCart/shopingCartSlice';
-import { getShopingCartData } from '../features/shopingCart/shopingCartSlice';
+import { changeProductQuantity } from '../features/shoppingCart/shoppingCartSlice';
+import { deleteCart } from '../features/shoppingCart/shoppingCartSlice';
+import { getShoppingCartData } from '../features/shoppingCart/shoppingCartSlice';
 
-export default function ShopingCart() {
+export default function ShoppingCart() {
 
     const dispatch = useDispatch();
 
@@ -16,14 +16,14 @@ export default function ShopingCart() {
         dispatch(changeProductQuantity(data))
     }
 
-    const shopingCartItemMapState = useSelector((state) => state.shopingCartState.shopingCartItemMap)
+    const shoppingCartItemMapState = useSelector((state) => state.shoppingCart.shoppingCartItemMap)
 
-    function shopingCartQuantity(id) {
-        return shopingCartItemMapState[id].quantity
+    function shoppingCartQuantity(id) {
+        return shoppingCartItemMapState[id].quantity
     }
 
 
-    let data = Object.values(shopingCartItemMapState).map(el => {
+    let data = Object.values(shoppingCartItemMapState).map(el => {
         return <div className="shoppingCard">
             <input type="checkbox" />
             <div className="shoppingCard__pictured-container">
@@ -34,14 +34,14 @@ export default function ShopingCart() {
                 <div className="shoppingCard__purchase-information">
                     <p className="shoppingCard__price">${el.price}</p>
                     <input type="number"
-                        value={shopingCartQuantity(el.productId)}
+                        value={shoppingCartQuantity(el.productId)}
                         className="shoppingCard__quantity"
                         onChange={(e) => {
                             handleProductAmountChange({ quantity: e.target.value, id: el.cartId })
                         }} />
 
                     <p className="shoppingCard__price-subtotal">${
-                        shopingCartQuantity(el.productId) * el.price
+                        shoppingCartQuantity(el.productId) * el.price
                     }</p>
 
                     <button onClick={() => {
@@ -53,7 +53,7 @@ export default function ShopingCart() {
     })
 
     useEffect(() => {
-        dispatch(getShopingCartData())
+        dispatch(getShoppingCartData())
     }, [])
 
     return (
