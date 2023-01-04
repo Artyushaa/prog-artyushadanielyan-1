@@ -1,0 +1,206 @@
+.featured-product-container {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid; */
+    margin-top: 25px;
+    padding: 0 12px 0 12px;
+}
+.featured-categories {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+}
+.featured-categories__text {
+    font-weight: 700;
+    font-size: 2rem;
+    font-family: "Quicksand", sans-serif;
+    color: #253D4E;
+}
+.featured-categories__item {
+    width: 35%;
+    /* border: 1px solid; */
+    display: flex;
+    font-size: .9rem;
+    list-style: none;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+.featured-categories__click {
+    text-decoration: none;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    color: #444;
+    transition: all ease .3s;
+}
+.featured-categories__list {
+    transition: all ease .3s;
+}
+.featured-categories__list:hover {
+    color: #3BB77E;
+    transform: translateY(-.2rem);
+}
+.featured-categories__click:hover {
+    color: #3BB77E;
+}
+.featured-categories--green-text {
+    color: #3BB77E;
+}
+.featured-categories__btn-container {
+    margin-left: auto;
+}
+.featured-categories__left-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+}
+.featured-categories__left-btn:hover {
+    background-color: #3BB77E;
+}
+.featured-categories__right-btn:hover {
+    background-color: #3BB77E;
+}
+.featured-categories__right-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+}
+.fa-arrow-right {
+    color: #7E7E7E;
+}
+.fa-arrow-left {
+    color: #7E7E7E;
+}
+.featured-categories__left-btn:hover .fa-arrow-left{
+    color: white;
+}
+.featured-categories__right-btn:hover .fa-arrow-right{
+    color: white;
+}
+.featured-product {
+    width: 100%;
+    height: auto;
+    // border: 1px solid;
+    margin-top: 40px;
+    overflow: hidden;
+}
+.featured-product__slide {
+    width: 110%;
+    height: auto;
+    // border: 1px solid red;
+    display: flex;
+    justify-content: space-evenly;
+}
+.featured-product-card {
+    width: 12%;
+    height: auto;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #F4F6FA;
+    margin: 0 15px 0 0px;
+    padding: 0 0 20px 0;
+    border-radius: .9rem;
+}
+.featured-product-card:hover {
+    border: 1px solid #72d6a8;
+    /* scale: 1; */
+}
+.featured-product-card:hover .featured-product-name{
+    color: #3BB77E;
+}
+.featured-product__pictured {
+    width: 70%;
+    height: 60%;
+}
+.featured-product-name {
+    font-family: "Quicksand", sans-serif;
+    color: #253D4E;
+    font-weight: 700;
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+}
+.featured-product-quantity {
+    font-size: .9rem;
+    color: #7E7E7E;
+}
+.featured-product--pink1 {
+    background-color: #FFFCEB;
+}
+.featured-product--pink2 {
+    background-color: #FEEFEA;
+}
+.featured-product--pink3 {
+    background-color: #FFF3EB;
+}
+.featured-product--pink4 {
+    background-color: #FFF3EB;
+}
+.featured-product--pink5 {
+    background-color: #FEEFEA;
+}
+.featured-product--pink6 {
+    background-color: #FEEFEA;
+}
+.featured-product--aqua {
+    background-color: #ECFFEC;
+}
+.featured-product--aqua {
+    background-color: #ECFFEC;
+}
+.featured-product__three-card-container {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 45px;
+}
+.featured-product-three-card {
+    width: 32%;
+    height: auto;
+    /* border: 1px solid; */
+    position: relative;
+    padding: 0 0 70px 0;
+}
+.featured-product__three-pictured {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    border-radius: .9rem;
+}
+.featured-product__three-card-header {
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-family: "Quicksand", sans-serif;
+    color: #253D4E;
+    width: 50%;
+    margin: 70px 0 0 60px;
+}
+.featured-product__three-card-btn {
+    background-color: #3BB77E;
+    color: white;
+    padding: 10px 10px 10px 10px;
+    margin: 30px 0 0 60px;
+    border: none;
+    font-size: .9rem;
+    border-radius: .3rem;
+    font-weight: 700;
+    font-family: "Quicksand", sans-serif;
+    transition: all ease .5s;
+}
+.featured-product__three-card-btn:hover {
+    background-color: #FDC040;
+}
+.featured-product__three-card-btn:hover .fa-arrow-right-long {
+    margin-left: 15px;
+}
+.fa-arrow-right-long {
+    color: white;
+    margin-left: 10px;
+    font-size: .7rem;
+}
