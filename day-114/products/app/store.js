@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import addProduct from '../features/addCart/shopingCartSlice';
-import deleteShopCard from '../features/deleteCard/deleteSlice';
+import shopingCartReducer from '../features/shopingCart/shopingCartSlice';
 import filterSlice from '../features/product-filter/productFilterSlice';
 import { createWrapper } from 'next-redux-wrapper';
 
@@ -10,9 +9,8 @@ import { createWrapper } from 'next-redux-wrapper';
 const makeStore = (context) => {
   return configureStore({
     reducer: {
-      delete: deleteShopCard,
       filter: filterSlice,
-      addCart: addProduct
+      shopingCartState: shopingCartReducer
     },
   });
 }

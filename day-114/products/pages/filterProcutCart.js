@@ -2,7 +2,7 @@ import { getFilterProducts, getPageInation } from "../features/product-filter/pr
 import { filterProduct } from "../features/product-filter/productFilterSlice";
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from "react";
-import { addProductInShoppingCart, saveStateProduct } from "../features/addCart/shopingCartSlice";
+import { addProductInShoppingCart } from "../features/shopingCart/shopingCartSlice";
 import Link from "next/link";
 import { setCategoryId } from '../features/product-filter/productFilterSlice'
 
@@ -28,12 +28,12 @@ export default function filterProductCart() {
     const dispatch = useDispatch();
     let filterProductState = useSelector((state) => state.filter.filterProduct);
     let getFilterProductsState = useSelector((state) => state.filter.getFilterProducts);
-    let getProductState = useSelector((state) => state.addCart.product);
+    let getProductState = useSelector((state) => state.shopingCartState.product);
 
     let getFilterProductsData = getFilterProductsState.map((e) => {
         return <div key={e._id} className="filter-product__cart">
             <img src={"https://420.canamaster.net/media/image/d/350/".concat(e?.imageMain[0]?.image?.url)} alt="" className="popular-products__pictured" />
-            <Link className='popular-products__description-dish' href={`/${e._id}`}>{e.descriptions.map((e) => {
+            <Link className='popular-products__description-dish' href={`/products/${e.productId}`}>{e.descriptions.map((e) => {
                 return e.name
             })}</Link>
             <div className="popular-products__fa-star-container">

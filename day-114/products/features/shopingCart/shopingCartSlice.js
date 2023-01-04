@@ -1,18 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import transformCartItemData from "../../pages/transformCartItem";
-import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
-    product: [],
-    shopingCartData: [],
-    quantity: 1,
-    addProductData: {},
-    addProductAndEnlargeQuantity: 0,
+    saveDeleteCartId: [],
     shopingCartItemMap: {},
 }
 
+export const deleteCart = createAsyncThunk(
+    'shopingCart/deleteCart',
+    async (cartId, { rejectWithValue, dispatch }) => {
+        let token = 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODg1MzBjODYzNTAzMGIxZDA4NTE0YyIsImlhdCI6MTY2OTg3OTEwMn0.7r84ouxrKweV6Z2m-cvD8OS1RZY4yxPcWu2Pj3FKyOD5LxbhQmbKPrLxJ3NI9C4Q'
+        var myHeaders = new Headers();
+        myHeaders.append("Cookie", "session=s%3A2Uga7S3EoPMYFYSp28DXkkA8S8uw8wBy.9Qc2KwSU7gSmH49cu2juNVNRZqvxgD4fqosITwnAgqQ");
+        myHeaders.append("Authorization", `Bearer ${token}`);
+        let res = fetch(`https://420.canamaster.net/cart/rest/${cartId}`, {
+            method: 'DELETE',
+            headers: myHeaders,
+            body: JSON.stringify(cartId),
+            redirect: 'follow'
+        })
+        let result = await res.json()
+        return result
+    }
+)
+
 export const getShopingCartData = createAsyncThunk(
-    'addProduct/shopingCartData',
+    'shopingCart/shopingCartData',
     async (_, { rejectWithValue, dispatch }) => {
         let token = 'eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODg1MzBjODYzNTAzMGIxZDA4NTE0YyIsImlhdCI6MTY2OTg3OTEwMn0.7r84ouxrKweV6Z2m-cvD8OS1RZY4yxPcWu2Pj3FKyOD5LxbhQmbKPrLxJ3NI9C4Q'
         const myHeaders = new Headers();
@@ -33,7 +46,7 @@ export const getShopingCartData = createAsyncThunk(
 )
 
 export const addProductInShoppingCart = createAsyncThunk(
-    "addProduct/addProductInShoppingCart",
+    "shopingCart/addProductInShoppingCart",
     async (id, { rejectWithValue, dispatch }) => {
         let addItem = {
             "quantity": 1,
@@ -57,7 +70,7 @@ export const addProductInShoppingCart = createAsyncThunk(
 )
 
 export const changeProductQuantity = createAsyncThunk(
-    'addProduct/changeProductQuantity',
+    'shopingCart/changeProductQuantity',
     async (data, { rejectWithValue, dispatch }) => {
         let addItem = {
             "quantity": data.quantity,
@@ -89,7 +102,7 @@ export const changeProductQuantity = createAsyncThunk(
 )
 
 export const addProductAndEnlargeQuantity = createAsyncThunk(
-    'addProduct/addProductAndEnlargeQuantity',
+    'shopingCart/addProductAndEnlargeQuantity',
     async (data, { rejectWithValue, dispatch }) => {
         console.log(data, 'data');
         let addItem = {
@@ -122,7 +135,7 @@ export const addProductAndEnlargeQuantity = createAsyncThunk(
 )
 
 export const getProduct1 = createAsyncThunk(
-    'addProduct/getProduct1',
+    'shopingCart/getProduct1',
     async (_, { rejectWithValue, dispatch }) => {
         let res = await fetch('https://420.canamaster.net/api/v1/products/category/new/0/1/30?filterIds=[]&&attributeIds=[]&&productIds=[]&&parentCategoryId=23&&priceMinMax=[]&&brandIds=[]');
         let result = await res.json();
@@ -130,19 +143,11 @@ export const getProduct1 = createAsyncThunk(
     }
 )
 
-const addProduct = createSlice({
-    name: 'addProduct',
+const shopingCartReducer = createSlice({
+    name: 'shopingCart',
     initialState,
     reducers: {
-        addToCart(state, action) {
-            state.product = action.payload
-        },
-        shopingCartData(state, action) {
-            state.shopingCartData = action.payload
-        },
-        saveStateProduct(state, action) {
-            state.quantityIncrement += 1
-        }
+
     },
     extraReducers: (builder) => {
         builder
@@ -152,6 +157,9 @@ const addProduct = createSlice({
             //         ...action.payload
             //     }
             // })
+            .addCase(deleteCart.fulfilled, (state, action) => {
+                state.saveDeleteCartId = action.payload
+            })
             .addCase(getProduct1.pending, (state) => {
                 state.status = 'loading';
             })
@@ -185,6 +193,6 @@ const addProduct = createSlice({
 })
 
 
-export const { addToCart, saveStateProduct, shopingCartData } = addProduct.actions;
-export default addProduct.reducer;
+export const { addToCart, saveStateProduct, shopingCartData } = shopingCartReducer.actions;
+export default shopingCartReducer.reducer;
 

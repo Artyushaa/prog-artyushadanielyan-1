@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeProductQuantity } from '../features/addCart/shopingCartSlice';
-import { deleteCart } from '../features/deleteCard/deleteSlice';
-import { getShopingCartData } from '../features/addCart/shopingCartSlice';
+import { changeProductQuantity } from '../features/shopingCart/shopingCartSlice';
+import { deleteCart } from '../features/shopingCart/shopingCartSlice';
+import { getShopingCartData } from '../features/shopingCart/shopingCartSlice';
 
 export default function ShopingCart() {
 
@@ -16,13 +16,7 @@ export default function ShopingCart() {
         dispatch(changeProductQuantity(data))
     }
 
-    const quantityState = useSelector((state) => state.addCart.quantity);
-    const addProductAndEnlargeQuantityState = useSelector((state) => state.addCart.addProductAndEnlargeQuantity);
-    const shopingCartDataState = useSelector((state) => state.addCart.shopingCartData);
-    const shopingCartItemMapState = useSelector((state) => state.addCart.shopingCartItemMap)
-    const getShopingCartDataState = useSelector((state) => state.addCart.getShopingCartData)
-
-    console.log(shopingCartItemMapState,'shopingCartItemMapState');
+    const shopingCartItemMapState = useSelector((state) => state.shopingCartState.shopingCartItemMap)
 
     function shopingCartQuantity(id) {
         return shopingCartItemMapState[id].quantity

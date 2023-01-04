@@ -1,16 +1,13 @@
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductInShoppingCart, quantityProduct, saveStateProduct, addProductAndEnlargeQuantity } from '../../features/addCart/shopingCartSlice';
+import { addProductInShoppingCart, addProductAndEnlargeQuantity } from '../../features/shopingCart/shopingCartSlice';
 
 export default function Products({ products }) {
 
     const dispatch = useDispatch();
 
-    const addProductState = useSelector((state) => state.addCart.addProductData)
-    const quantityState = useSelector((state) => state.addCart.quantity)
-    const quantityIncrementState = useSelector((state) => state.addCart.quantityIncrement)
-    const shopingCartItemMapState = useSelector((state) => state.addCart.shopingCartItemMap)
-    console.log(shopingCartItemMapState, 'shopingCartItemMapState');
+    const shopingCartItemMapState = useSelector((state) => state.shopingCartState.shopingCartItemMap)
+    console.log(shopingCartItemMapState,'shopingcart');
 
     function handleClickAddToCart(productId) {
         dispatch(addProductInShoppingCart(productId))
@@ -40,9 +37,9 @@ export default function Products({ products }) {
                                 <div className="popular-products__price">
                                     <span className="popular-products--color-green">{product.price + "$"}</span>
                                 </div>
-                                <button onClick={() => {
+                                <button disabled={false} onClick={() => {
                                     if (shopingCartItemMapState[product.productId]) {
-                                        dispatch(addProductAndEnlargeQuantity({ quantity: shopingCartQuantity(product.productId), id: shopingCartItemMapState[product.productId] }))
+                                        dispatch(addProductAndEnlargeQuantity({ quantity: shopingCartQuantity(product?.productId), id: shopingCartItemMapState[product.productId] }))
                                     } else {
                                         handleClickAddToCart(product?.productId)
                                     }
