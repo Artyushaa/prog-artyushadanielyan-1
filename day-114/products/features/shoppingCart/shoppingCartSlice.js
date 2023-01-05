@@ -18,21 +18,16 @@ export const deleteCart = createAsyncThunk(
 export const getShoppingCartData = createAsyncThunk(
     'shoppingCart/shoppingCartData',
     async (_, { rejectWithValue, dispatch }) => {
-        let result = getShoppingCartDataRequest();
-        return result.then(response => {
-            return response.data
-        })
+        let result = await getShoppingCartDataRequest();
+        return result.data
     }
 )
 
 export const addProductInShoppingCart = createAsyncThunk(
     "shoppingCart/addProductInShoppingCart",
     async (id, { rejectWithValue, dispatch }) => {
-        let data = addProductItemInShoppingCart(id)
-        console.log(data,'data');
-        return data.then(response => {
-            return response.data
-        })
+        let data = await addProductItemInShoppingCart(id)
+        return data.data
     }
 )
 

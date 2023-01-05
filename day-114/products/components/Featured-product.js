@@ -66,7 +66,7 @@ export default function FeaturedProduct() {
                 </div>
 
                 <div className="featured-product__three-card-container">
-                    <FeaturedProductThreeCard name='Everyday Fresh & Clean with Our Products' url='../public/img/banner/banner-1.png' />
+                    <FeaturedProductThreeCard name='Everyday Fresh & Clean with Our Products' url='img/banner/banner-1.png' />
                     <FeaturedProductThreeCard name='Make your Breakfast Healthy and Easy' url='img/banner/banner-2.png' />
                     <FeaturedProductThreeCard name='The best Organic Products Online' url='img/banner/banner-3.png' />
                 </div>

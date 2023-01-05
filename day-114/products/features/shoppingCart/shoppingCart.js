@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeProductQuantity } from '../features/shoppingCart/shoppingCartSlice';
-import { deleteCart } from '../features/shoppingCart/shoppingCartSlice';
-import { getShoppingCartData } from '../features/shoppingCart/shoppingCartSlice';
+import { changeProductQuantity } from './shoppingCartSlice';
+import { deleteCart } from './shoppingCartSlice';
+import { getShoppingCartData } from './shoppingCartSlice';
 
-export default function ShoppingCart() {
-
+export default function ShoppingCartItems() {
     const dispatch = useDispatch();
 
     function handleClickDeleteCart(cartId) {
@@ -64,4 +63,3 @@ export default function ShoppingCart() {
         </>
     )
 }
-

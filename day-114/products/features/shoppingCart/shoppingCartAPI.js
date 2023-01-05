@@ -38,7 +38,6 @@ export async function addProductItemInShoppingCart(id) {
     let response = await axios.post("https://420.canamaster.net/cart/rest/", addItem, {
         headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(response, 'response');
 
     return {
         data: transformCartItemData(response.data),

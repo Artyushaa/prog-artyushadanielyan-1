@@ -34,7 +34,7 @@ export default function Header() {
 
                 <div className="header__main">
                     <div className="header__main__logo">
-                        <img src="img/icons/logo.svg" alt="" className="header__main__svg" />
+                        <Link href="/"><img src="img/icons/logo.svg" alt="" className="header__main__svg" /></Link>
                     </div>
                     <div className="header__main__search">
                         <form action="#" className="header__search-container">
@@ -63,7 +63,7 @@ export default function Header() {
                         <div className="profile__action">
                             <div href="#" className="profile__link">
                                 <img src="img/icons/icon-cart.svg" alt="" />
-                                <Link href="/shoppingCard" className="profile__link">Cart</Link>
+                                <Link href="/shopping" className="profile__link">Cart</Link>
                             </div>
                         </div>
 

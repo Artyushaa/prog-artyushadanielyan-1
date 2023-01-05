@@ -155,7 +155,7 @@
 .featured-product__three-card-container {
     width: 100%;
     height: auto;
-    /* border: 1px solid; */
+    // border: 1px solid;
     display: flex;
     justify-content: space-between;
     margin-top: 45px;
@@ -168,8 +168,8 @@
 }
 .featured-product__three-pictured {
     width: 100%;
-    position: absolute;
-    z-index: -1;
+    position: relative;
+    // border: 1px solid;
     border-radius: 1.4rem;
 }
 .featured-product__three-card-header {
@@ -178,19 +178,23 @@
     font-family: "Quicksand", sans-serif;
     color: #253D4E;
     width: 55%;
-    margin: 70px 0 0 40px;
+    top: 70px;
+    left: 40px;
     transition: all ease .4s;
+    position: absolute;
 }
 .featured-product__three-card-header:hover {
     transform: translateY(-10px);
 }
 .featured-product__three-card-btn {
     background-color: #3BB77E;
+    position: absolute;
     color: white;
+    left: 40px;
+    bottom: 30px;
     padding: 10px 10px 10px 10px;
-    margin: 30px 0 0 40px;
     border: none;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     border-radius: .6rem;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
