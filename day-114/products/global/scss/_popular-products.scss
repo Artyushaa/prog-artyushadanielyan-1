@@ -8,7 +8,7 @@
 .popular-products__categories {
     width: 100%;
     height: auto;
-    /* border: 1px solid; */
+    border: 1px solid; 
     display: flex;
     justify-content: space-between;
     padding: 0 10px 0 10px;
@@ -23,15 +23,15 @@
 
 .popular-products__item {
     width: 45%;
-    /* border: 1px solid; */
+    // border: 1px solid;
     list-style: none;
     display: flex;
-    font-size: 1.4rem;
     align-items: center;
     justify-content: space-evenly;
 }
 
 .popular-products__list {
+    font-size: 1.4rem;
     transition: all ease .3s;
 }
 

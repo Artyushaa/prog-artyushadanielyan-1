@@ -6,7 +6,7 @@ export function DropDownHome(props) {
     return (
         <>
             <div className={classname}>
-                <Link className="departament__list__drop-down-text" href="/products">Home 1</Link>
+                <Link className="departament__list__drop-down-text" href="#">Home 1</Link>
                 <Link className="departament__list__drop-down-text" href="#">Home 2</Link>
                 <Link className="departament__list__drop-down-text" href="#">Home 3</Link>
                 <Link className="departament__list__drop-down-text" href="#">Home 4</Link>

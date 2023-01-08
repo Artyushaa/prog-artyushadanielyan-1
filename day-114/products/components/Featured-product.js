@@ -11,7 +11,6 @@ export function FeaturedProductCard({ name, quantity, url, classname }) {
 }
 
 export function FeaturedProductThreeCard({ name, url }) {
-    console.log(url,'rul');
     return (
         <>
             <div className="featured-product-three-card">

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import transformCartItemData from "../../pages/transformCartItem";
-import { addProductItemInShoppingCart, DeleteCartItem, getShoppingCartDataRequest } from "./shoppingCartAPI";
+import { addProductAndEnlargeQuantityRequest, addProductItemInShoppingCart, changeProductQuantityRequest, deleteCartItem, getShoppingCartDataRequest } from "./shoppingCartAPI";
 
 const initialState = {
     saveDeleteCartId: [],
@@ -10,7 +10,7 @@ const initialState = {
 export const deleteCart = createAsyncThunk(
     'shoppingCart/deleteCart',
     async (cartId, { rejectWithValue, dispatch }) => {
-        let result = DeleteCartItem(cartId)
+        let result = deleteCartItem(cartId)
         return result
     }
 )
@@ -34,65 +34,16 @@ export const addProductInShoppingCart = createAsyncThunk(
 export const changeProductQuantity = createAsyncThunk(
     'shoppingCart/changeProductQuantity',
     async (data, { rejectWithValue, dispatch }) => {
-        let addItem = {
-            "quantity": data.quantity,
-            "cartId": data.id
-        };
-
-        let token = localStorage.getItem('token')
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${token}`)
-        let response = await fetch(`https://420.canamaster.net/cart/rest/${addItem.cartId}`, {
-            method: "PUT",
-            headers: myHeaders,
-            body: JSON.stringify(addItem),
-            redirect: "follow"
-        });
-
-        let resData = await response.json();
-
-        return {
-            name: resData.product.descriptions[0].name,
-            price: resData.product.price / 1,
-            image: `https://420.canamaster.net/media/image/d/350/${data?.product?.imageMain[0]?.image?.url}`,
-            quantity: resData.quantity,
-            cartId: resData.cartId,
-            productId: resData.product_id,
-        }
+        let result = await changeProductQuantityRequest(data)
+        return result.data
     }
 )
 
 export const addProductAndEnlargeQuantity = createAsyncThunk(
     'shoppingCart/addProductAndEnlargeQuantity',
     async (data, { rejectWithValue, dispatch }) => {
-        console.log(data, 'data');
-        let addItem = {
-            "quantity": data.quantity,
-            "cartId": data.id.cartId
-        };
-
-        let token = localStorage.getItem('token')
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${token}`)
-        let response = await fetch(`https://420.canamaster.net/cart/rest/${addItem.cartId}`, {
-            method: "PUT",
-            headers: myHeaders,
-            body: JSON.stringify(addItem),
-            redirect: "follow"
-        });
-
-        let resData = await response.json();
-
-        return {
-            name: resData.product.descriptions[0].name,
-            price: resData.product.price / 1,
-            image: `https://420.canamaster.net/media/image/d/350/${data?.product?.imageMain[0]?.image?.url}`,
-            quantity: resData.quantity,
-            cartId: resData.cartId,
-            productId: resData.product_id,
-        }
+        let result = await addProductAndEnlargeQuantityRequest(data)
+        return result.data
     }
 )
 
@@ -133,7 +84,7 @@ const shoppingCartReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(changeProductQuantity.fulfilled, (state, action) => {
-                console.log(action.payload, 'action');
+                console.log(action.payload, 'actionaaaaa');
                 state.shoppingCartItemMap[action.payload.productId] = action.payload
                 state.status = 'ok'
             })
