@@ -1,10 +1,56 @@
-.shoppingCard {
-    width: 70%;
+.shoppingCart {
+    width: 65%;
     height: auto;
     // border: 1px solid;
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: space-evenly;
+    padding: 20px 0 20px 0px;
+
+    &__container {
+        width: 65%;
+        height: auto;
+        border: 1px solid #ececec;
+        margin: 20px;
+    }
+
+    &__markAllProduct {
+        width: 100%;
+        height: auto;
+        // border: 1px solid;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 25px;
+        border-radius: 1.8rem;
+        background-color: #ececec;
+    }
+
+    &__markAllProduct__title {
+        font-size: 1.6rem;
+        font-family: "Lato", sans-serif;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #212529;
+        display: flex;
+        justify-content: space-between;
+        width: 10%;
+    }
+
+    &__markAllProduct__item-container {
+        list-style: none;
+        // border: 1px solid;
+        display: flex;
+        justify-content: space-evenly;
+        width: 40%;
+    }
+    &__markAllProduct__item{
+        background-color: #ececec;
+        padding: 18px 0;
+        font-family: "Quicksand", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: #253d4e;
+    }
 
     &__pictured-container {
         width: 13%;
@@ -21,7 +67,7 @@
     }
 
     &__info-container {
-        width: 83%;
+        width: 75%;
         height: auto;
         // border: 1px solid;
         display: flex;
@@ -37,6 +83,7 @@
     }
 
     &__name {
+        width: 50%;
         font-size: 1.6rem;
         font-family: "Quicksand", sans-serif;
         color: #253d4e;
@@ -68,7 +115,7 @@
     &__quantity {
         width: 20%;
         height: 7vh;
-        padding-left: 30px;
+        padding-left: 25px;
         border-radius: 0.5rem;
         border: 2px solid #3bb77e;
         margin-top: 10px;

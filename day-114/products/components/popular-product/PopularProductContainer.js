@@ -1,16 +1,16 @@
-import PopularProductFilterItem from "./PopularProductFilter"
-import PopualrProductsItem from "./PopularProductItems"
+import PopularProductsItem from "./PopularProductItems"
 
-export function PopularProductCard(products) {
+export function PopularProductCard(props) {
+    const { products } = props
     return (
         <>
-            <PopularProductFilterItem />
-            <PopualrProductsItem products={products} />
+            <PopularProductsItem products={products} />
         </>
     )
 }
 
-export default function PopularProduct(products) {
+export default function PopularProduct(props) {
+    const { products } = props
     return (
         <>
             <PopularProductCard products={products} />

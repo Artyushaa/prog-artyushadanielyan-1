@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export function FeaturedProductCard({ name, quantity, url, classname }) {
     return (
         <>
@@ -25,6 +27,106 @@ export function FeaturedProductThreeCard({ name, url }) {
 
 
 export default function FeaturedProduct() {
+
+    const [moveLeft, setMoveLeft] = useState(false);
+    const [className, setClassName] = useState('')
+    const [featuredProducts, setFeaturedProducts] = useState([
+        {
+            name: "Headphone",
+            quantity: "87 items",
+            url: "img/shop/cat-15.png",
+            classname: "featured-product-card featured-product--aqua",
+        },
+        {
+            name: "Cake & Milk",
+            quantity: "26 items",
+            url: "img/shop/cat-13.png",
+            classname: "featured-product-card",
+        },
+        {
+            name: "Organic Kiwi",
+            quantity: "28 items",
+            url: "img/shop/cat-12.png",
+            classname: "featured-product-card featured-product--pink1",
+        },
+        {
+            name: "Peach",
+            quantity: "14 items",
+            url: "img/shop/cat-11.png",
+            classname: "featured-product-card featured-product--aqua",
+        },
+        {
+            name: "Read Apple",
+            quantity: "54 items",
+            url: "img/shop/cat-9.png",
+            classname: "featured-product-card featured-product--pink2",
+        },
+        {
+            name: "Snack",
+            quantity: "56 items",
+            url: "img/shop/cat-3.png",
+            classname: "featured-product-card featured-product--pink3",
+        },
+        {
+            name: "Vegatables",
+            quantity: "72 items",
+            url: "img/shop/cat-1.png",
+            classname: "featured-product-card featured-product--pink1",
+        },
+        {
+            name: "Cake & Milk",
+            quantity: "26 items",
+            url: "img/shop/cat-2.png",
+            classname: "featured-product-card",
+        },
+        {
+            name: "Black lum",
+            quantity: "123 items",
+            url: "img/shop/cat-4.png",
+            classname: "featured-product-card featured-product--pink4",
+        },
+        {
+            name: "Custrad apple",
+            quantity: "34 items",
+            url: "img/shop/cat-5.png",
+            classname: "featured-product-card featured-product--pink1",
+        },
+        {
+            name: "Coffe & Tea",
+            quantity: "89 items",
+            url: "img/shop/cat-14.png",
+            classname: "featured-product-card featured-product--pink5",
+        },
+        {
+            name: "Headphone",
+            quantity: "87 items",
+            url: "img/shop/cat-15.png",
+            classname: "featured-product-card featured-product--aqua",
+        },
+    ]);
+    function moveToRight() {
+        setMoveLeft(true);
+        const array = [...featuredProducts]
+        setClassName('featured-product__right-btn')
+        setTimeout(() => {
+            array.pop()
+            array.unshift(array[array.length - 1])
+            setFeaturedProducts([...array])
+            setMoveLeft(false)
+        }, 700)
+    }
+    function moveToLeft() {
+        setMoveLeft(true);
+        const array = [...featuredProducts]
+        setClassName('featured-product__left-btn')
+        setTimeout(() => {
+            array.shift()
+            array.push(array[0])
+            setFeaturedProducts([...array])
+            setMoveLeft(false)
+        }, 700)
+    }
+
     return (
         <>
             <div className="featured-product-container">
@@ -42,32 +144,30 @@ export default function FeaturedProduct() {
                         </li>
                     </ul>
                     <div className="featured-categories__btn-container">
-                        <button className="featured-categories__left-btn"><i className="fa-solid fa-arrow-left"></i></button>
-                        <button className="featured-categories__right-btn"><i
+                        <button className="featured-categories__left-btn" onClick={moveToRight}><i className="fa-solid fa-arrow-left"></i></button>
+                        <button className="featured-categories__right-btn" onClick={moveToLeft}><i
                             className="fa-solid fa-arrow-right right"></i></button>
                     </div>
                 </div>
 
                 <div className="featured-product">
                     <div className="featured-product__slide">
-                        <FeaturedProductCard name="Cake & Milk" quantity="26 items" url="img/shop/cat-13.png" classname="featured-product-card" />
-                        <FeaturedProductCard name="Oganic Kiwi" quantity="28 items" url="img/shop/cat-12.png" classname="featured-product-card featured-product--pink1" />
-                        <FeaturedProductCard name="Peach" quantity="14 items" url="img/shop/cat-11.png" classname="featured-product-card featured-product--aqua" />
-                        <FeaturedProductCard name="Red Apple" quantity=" 54items" url="img/shop/cat-9.png" classname="featured-product-card featured-product--pink2" />
-                        <FeaturedProductCard name="Snack" quantity="56 items" url="img/shop/cat-3.png" classname="featured-product-card featured-product--pink3" />
-                        <FeaturedProductCard name="Vegetables" quantity="72 items" url="img/shop/cat-1.png" classname="featured-product-card featured-product--pink1" />
-                        <FeaturedProductCard name="Strawberry" quantity="36 items" url="img/shop/cat-2.png" classname="featured-product-card" />
-                        <FeaturedProductCard name="Black lum" quantity="123 items" url="img/shop/cat-4.png" classname="featured-product-card featured-product--pink4" />
-                        <FeaturedProductCard name="Custrad apple" quantity="34 items" url="img/shop/cat-5.png" classname="featured-product-card featured-product--pink1" />
-                        <FeaturedProductCard name="Coffe & Tea" quantity="89 items" url="img/shop/cat-14.png" classname="featured-product-card featured-product--pink5" />
-                        <FeaturedProductCard name="Headphone" quantity="87 items" url="img/shop/cat-15.png" classname="featured-product-card featured-product--aqua" />
+                        {
+                            featuredProducts.map((product) => {
+                                return <FeaturedProductCard
+                                    name={product.name}
+                                    quantity={product.quantity}
+                                    url={product.url}
+                                    classname={moveLeft ? `${product.classname} ${className}` : product.classname} />
+                            })
+                        }
                     </div>
                 </div>
 
                 <div className="featured-product__three-card-container">
-                    <FeaturedProductThreeCard name='Everyday Fresh & Clean with Our Products' url='img/banner/banner-1.png' />
-                    <FeaturedProductThreeCard name='Make your Breakfast Healthy and Easy' url='img/banner/banner-2.png' />
-                    <FeaturedProductThreeCard name='The best Organic Products Online' url='img/banner/banner-3.png' />
+                    <FeaturedProductThreeCard name='Everyday Fresh & Clean with Our Products' url='img/banner-imgs/banner-1.png' />
+                    <FeaturedProductThreeCard name='Make your Breakfast Healthy and Easy' url='img/banner-imgs/banner-2.png' />
+                    <FeaturedProductThreeCard name='The best Organic Products Online' url='img/banner-imgs/banner-3.png' />
                 </div>
             </div>
         </>

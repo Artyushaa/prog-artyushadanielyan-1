@@ -1,19 +1,40 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import DailySells from "../components/Daily-sells";
 import DealsDay from "../components/Deals-day";
 import FeaturedProduct from "../components/Featured-product";
 import PopularProduct from "../components/popular-product/PopularProductContainer";
 import TopProduct from "../components/Top-product";
 import WrapperSlide from "../components/Wrapper-slide";
+import Modal from "./Modal/Modal";
 
-export default function MyApp(products) {
+export default function MyApp(props) {
+
+    const errorState = useSelector(state => state.shoppingCart.errorMassage);
+
+    const { products } = props
+
+    const [modalActive, setModalActive] = useState(false)
+
+    useEffect(() => {
+        if (errorState) {
+            setModalActive(true)
+        }
+    }, [errorState])
+
+
     return (
         <>
-            <WrapperSlide />
-            <FeaturedProduct />
-            <PopularProduct products={products}/>
-            <DailySells />
-            <DealsDay/>
-            <TopProduct />
+            <div className="wrapper">
+                <WrapperSlide />
+                <FeaturedProduct />
+                <PopularProduct products={products} />
+                <DailySells />
+                <DealsDay />
+                <TopProduct />
+                <Modal active={modalActive} setActive={setModalActive} />
+            </div>
+
         </>
     )
 }

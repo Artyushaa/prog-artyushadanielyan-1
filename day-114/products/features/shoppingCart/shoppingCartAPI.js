@@ -2,7 +2,7 @@ import axios from 'axios'
 import transformCartItemData from '../../pages/transformCartItem'
 
 export async function deleteCartItem(cartId) {
-    let token = localStorage.getItem('token')
+    let token = localStorage.getItem('token');
     let res = await axios.delete(`https://420.canamaster.net/cart/rest/${cartId}`, cartId, {
         headers: { Authorization: `Bearer ${token}` },
     })
@@ -35,6 +35,7 @@ export async function addProductItemInShoppingCart(id) {
         "productId": id
     };
     let token = localStorage.getItem('token')
+   
     let response = await axios.post("https://420.canamaster.net/cart/rest/", addItem, {
         headers: { Authorization: `Bearer ${token}` },
     });
@@ -80,6 +81,7 @@ export async function addProductAndEnlargeQuantityRequest(data) {
     };
 
     let token = localStorage.getItem('token')
+    console.log(token,'token');
     let response = await axios.put(`https://420.canamaster.net/cart/rest/${addItem.cartId}`, addItem, {
         headers: { "Authorization": `Bearer ${token}` },
     });

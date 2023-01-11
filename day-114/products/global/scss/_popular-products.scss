@@ -1,15 +1,26 @@
+.popular-products {
+    width: 100%;
+    height: auto;
+    // border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
 .popular-products-container {
     width: 100%;
     height: auto;
-    /* border: 1px solid; */
+    // border: 1px solid;
     margin-top: 80px;
 }
 
 .popular-products__categories {
     width: 100%;
     height: auto;
-    border: 1px solid; 
+    // border: 1px solid;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 0 10px 0 10px;
 }
@@ -18,7 +29,7 @@
     font-weight: 700;
     font-size: 3rem;
     font-family: "Quicksand", sans-serif;
-    color: #253D4E;
+    color: #253d4e;
 }
 
 .popular-products__item {
@@ -31,38 +42,33 @@
 }
 
 .popular-products__list {
+    font-weight: 400;
+    font-family: "Quicksand", sans-serif;
+    color: #253d4e;
+    list-style: none;
     font-size: 1.4rem;
-    transition: all ease .3s;
+    transition: all ease 0.3s;
 }
 
 .popular-products__list:hover {
-    transform: translateY(-.2rem);
+    transform: translateY(-0.2rem);
 }
 
-.popular-products__click:hover {
-    color: #3BB77E;
+.popular-products__all:hover {
+    color: #3bb77e;
 }
 
-.popular-products__click {
+.popular-products__all {
     text-decoration: none;
     font-family: "Quicksand", sans-serif;
     font-size: 1.4rem;
-    color: #253D4E;
+    color: #253d4e;
     font-weight: 600;
+    // text-decoration: none;
 }
 
 .popular-products--color-green {
-    color: #3BB77E;
-}
-
-.popular-products {
-    width: 100%;
-    height: auto;
-    // border: 1px solid;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-top: 10px;
+    color: #3bb77e;
 }
 
 .popular-products_container {
@@ -101,7 +107,7 @@
 }
 
 .popular-products__descriptions--color-green {
-    background-color: #3BB77E;
+    background-color: #3bb77e;
 }
 
 .popular-products__descriptions--color-orange {
@@ -109,7 +115,7 @@
 }
 
 .popular-products__descriptions--color-green {
-    background-color: #3BB77E;
+    background-color: #3bb77e;
 }
 
 .popular-products__pictured {
@@ -137,7 +143,7 @@
     font-size: 1.4rem;
     font-weight: 700;
     font-family: "Quicksand", sans-serif;
-    color: #253D4E;
+    color: #253d4e;
     line-height: 20px;
     text-decoration: none;
     display: block;
@@ -145,7 +151,7 @@
 }
 
 .popular-products__description-dish:hover {
-    color: #3BB77E;
+    color: #3bb77e;
 }
 
 .popular-products__fa-star-container {
@@ -205,7 +211,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #DEF9EC;
+    background-color: #def9ec;
     border-radius: 5px;
     color: #20c997;
     font-weight: 400;
@@ -216,7 +222,7 @@
 .popular-products__add:hover {
     background-color: #20c997;
     color: white;
-    animation: foo .5s ease forwards;
+    animation: foo 0.5s ease forwards;
 }
 
 @keyframes foo {

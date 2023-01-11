@@ -1,0 +1,46 @@
+.my-order {
+    width: 50%;
+    height: auto;
+    // border: 1px solid;
+    margin-left: 300px;
+    margin-top: 50px;
+
+    &__data-info {
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(0,0,0,.125);
+        padding: 5px;
+        margin-top: 25px;
+    }
+
+    &__header {
+        font-size: 3.2rem;
+        font-family: "Quicksand", sans-serif;
+        color: #253d4e;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    &__list-container {
+        list-style: none;
+        display: flex;
+    }
+
+    &__list {
+        color: #212529;
+        font-family: "Lato", sans-serif;
+        font-size: 1.6rem;
+        line-height: 24px;
+        font-style: normal;
+        font-weight: 600;
+        width: 15rem;
+    }
+
+    &__data {
+        width: 100%;
+        height: 20px;
+        border: 1px solid rgba(0,0,0,.125);
+        padding: 5px;
+        border-top: none;
+    }
+}

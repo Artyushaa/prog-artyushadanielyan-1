@@ -1,14 +1,17 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductInShoppingCart, addProductAndEnlargeQuantity } from '../../features/shoppingCart/shoppingCartSlice';
+import MyApp from '../../pages';
+import PopularProductFilterItem from './PopularProductFilter';
 
-export default function PopualrProductsItem(props) {
-    const { products } = props
-    let product = products.products.products.products
+export default function PopularProductsItem(props) {
+
+    const { products, error } = props
 
     const dispatch = useDispatch();
 
-    const shoppingCartItemMapState = useSelector((state) => state.shoppingCart.shoppingCartItemMap)
+    const shoppingCartItemMapState = useSelector((state) => state.shoppingCart.shoppingCartItemMap);
 
     function handleClickAddToCart(productId) {
         dispatch(addProductInShoppingCart(productId))
@@ -18,12 +21,12 @@ export default function PopualrProductsItem(props) {
         return shoppingCartItemMapState[id]?.quantity + 1
     }
 
-
     return (
         <>
             <div className="popular-products">
+                <PopularProductFilterItem />
                 {
-                    product.map((product) => {
+                    products.map((product) => {
                         return <div className="popular-products_container">
                             <div className="popular-products__descriptions">Hot</div>
                             <img src={product.image} alt="" className="popular-products__pictured" />

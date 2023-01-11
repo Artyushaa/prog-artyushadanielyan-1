@@ -5,6 +5,7 @@ import { addProductAndEnlargeQuantityRequest, addProductItemInShoppingCart, chan
 const initialState = {
     saveDeleteCartId: [],
     shoppingCartItemMap: {},
+    errorMassage: ''
 }
 
 export const deleteCart = createAsyncThunk(
@@ -27,7 +28,7 @@ export const addProductInShoppingCart = createAsyncThunk(
     "shoppingCart/addProductInShoppingCart",
     async (id, { rejectWithValue, dispatch }) => {
         let data = await addProductItemInShoppingCart(id)
-        return data.data
+        // return data.data
     }
 )
 
@@ -102,7 +103,12 @@ const shoppingCartReducer = createSlice({
                 state.shoppingCartItemMap[action.payload.productId] = action.payload
                 state.status = 'ok'
             })
-    },
+            .addCase(addProductInShoppingCart.rejected, (state, action) => {
+                if (action.error.message) {
+                    state.errorMassage = action.error.message
+                }
+            })
+    }
 })
 
 

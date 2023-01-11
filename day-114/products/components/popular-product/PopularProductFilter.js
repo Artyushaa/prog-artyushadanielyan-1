@@ -21,7 +21,7 @@ export default function PopularProductFilterItem() {
             <div className="popular-products__categories">
                 <p className="popular-products__categories-header">Popular Products</p>
                 <li className="popular-products__list">
-                    <a href="#" className="popular-products__click popular-products--color-green">All</a>
+                    <a href="#" className="popular-products__all popular-products--color-green">All</a>
                 </li>
                 {
                     filterState.map((product) => {

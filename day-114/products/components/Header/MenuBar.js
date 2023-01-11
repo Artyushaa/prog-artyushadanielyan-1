@@ -42,17 +42,17 @@ export function DropDownPage({ classname }) {
     return (
         <>
             <div className={classname}>
-                <DropDownText dropDownText='About Us' />
-                <DropDownText dropDownText='Contact' />
-                <DropDownText dropDownText='Contact' />
-                <DropDownText dropDownText='Login' />
-                <DropDownText dropDownText='Register' />
-                <DropDownText dropDownText='Forgot password' />
-                <DropDownText dropDownText='Reset password' />
-                <DropDownText dropDownText='Purchase Guide' />
-                <DropDownText dropDownText='Privacy Policy' />
-                <DropDownText dropDownText='Terms of Service' />
-                <DropDownText dropDownText='404 Page' />
+                <Link className="departament__list__drop-down-text" href="#">About Us</Link>
+                <Link className="departament__list__drop-down-text" href="#">Contact</Link>
+                <Link className="departament__list__drop-down-text" href="/my-account">My Account</Link>
+                <Link className="departament__list__drop-down-text" href="#">Login</Link>
+                <Link className="departament__list__drop-down-text" href="#">Register</Link>
+                <Link className="departament__list__drop-down-text" href="#">Forgot password</Link>
+                <Link className="departament__list__drop-down-text" href="#">Reset password</Link>
+                <Link className="departament__list__drop-down-text" href="#">Purchase Guide</Link>
+                <Link className="departament__list__drop-down-text" href="#">Privacy Policy</Link>
+                <Link className="departament__list__drop-down-text" href="#">Terms of Service</Link>
+                <Link className="departament__list__drop-down-text" href="#">404 Page</Link>
             </div>
         </>
     )

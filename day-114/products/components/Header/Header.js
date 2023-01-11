@@ -63,14 +63,14 @@ export default function Header() {
                         <div className="profile__action">
                             <div href="#" className="profile__link">
                                 <img src="img/icons/icon-cart.svg" alt="" />
-                                <Link href="/shopping" className="profile__link">Cart</Link>
+                                <Link href="/shoppingCart/shoppingCartPages" className="profile__link">Cart</Link>
                             </div>
                         </div>
 
                         <div className="profile__action">
                             <div href="#" className="profile__link">
                                 <img src="img/icons/icon-user.svg" alt="" />
-                                <a href="#" className="profile__link">Account</a>
+                                <Link href="/src/Register" className="profile__link">Account</Link>
                             </div>
                         </div>
                     </div>

@@ -53,10 +53,10 @@ export default function DealsDay() {
 
                 <div className="deals-day__product-container">
 
-                    <DealsDayCard url="img/banner/banner-5.png" days="881" hours="11" mins="10" sec="34" name="Seeds of Change Organic Quinoa, Brown, & Red Rice" companyName="NestFood" price="$32.85" discountPrice="$33.8" />
-                    <DealsDayCard url="img/banner/banner-6.png" days="1277" hours="11" mins="08" sec="32" name="Perdue Simply Smart Organics Gluten Free" companyName="Old El Paso" price="$24.85" discountPrice="$26.8" />
-                    <DealsDayCard url="img/banner/banner-7.png" days="1611" hours="11" mins="07" sec="33" name="Signature Wood-Fired Mushroom and Caramelized" companyName="Progresso" price="$12.85" discountPrice="$13.8" />
-                    <DealsDayCard url="img/banner/banner-8.png" days="833" hours="11" mins="01" sec="34" name="Simply Lemonade with Raspberry Juice" companyName="Yoplait" price="$15.85" discountPrice="$16.8" />
+                    <DealsDayCard url="img/banner-imgs/banner-5.png" days="881" hours="11" mins="10" sec="34" name="Seeds of Change Organic Quinoa, Brown, & Red Rice" companyName="NestFood" price="$32.85" discountPrice="$33.8" />
+                    <DealsDayCard url="img/banner-imgs/banner-6.png" days="1277" hours="11" mins="08" sec="32" name="Perdue Simply Smart Organics Gluten Free" companyName="Old El Paso" price="$24.85" discountPrice="$26.8" />
+                    <DealsDayCard url="img/banner-imgs/banner-7.png" days="1611" hours="11" mins="07" sec="33" name="Signature Wood-Fired Mushroom and Caramelized" companyName="Progresso" price="$12.85" discountPrice="$13.8" />
+                    <DealsDayCard url="img/banner-imgs/banner-8.png" days="833" hours="11" mins="01" sec="34" name="Simply Lemonade with Raspberry Juice" companyName="Yoplait" price="$15.85" discountPrice="$16.8" />
                 </div>
             </div>
         </>
