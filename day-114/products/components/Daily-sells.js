@@ -56,7 +56,7 @@ export default function DailySells() {
                     <button className="daily-sells__right-btn"><i className="fa-solid fa-arrow-right right"></i></button>
                     <div className="daily-sells__nature-card">
                         <p className="daily-sells__nature-title">Bring Nature into your home</p>
-                        <img src="./img/banner/banner-4.png" alt="" className="daily-sells__nature-pictured"/>
+                        <img src="./img/banner-imgs/banner-4.png" alt="" className="daily-sells__nature-pictured"/>
                             <button className="daily-sells__nature-btn">Shop Now<i
                                 className="fa-solid fa-arrow-right-long"></i></button>
                     </div>

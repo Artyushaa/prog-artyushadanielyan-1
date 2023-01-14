@@ -27,9 +27,9 @@ export default function SignIn() {
 
         fetch("https://420.canamaster.net/customer/auth/signin", requestOptions)
             .then(response => response.json())
-            // .then(result => console.log(result))
             .then(result => {
                 if(result) {
+                    console.log(result,'result')
                     localStorage.setItem('token', result.token)
                     localStorage.setItem('expires', result.expires)
                 }

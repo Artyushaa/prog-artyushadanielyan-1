@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addedToOrders, getOrders } from './shoppingCartSlice';
 import { changeProductQuantity } from './shoppingCartSlice';
 import { deleteCart } from './shoppingCartSlice';
 import { getShoppingCartData } from './shoppingCartSlice';
@@ -19,6 +20,18 @@ export default function ShoppingCartItems() {
 
     function shoppingCartQuantity(id) {
         return shoppingCartItemMapState[id].quantity
+    }
+
+    function addedToOrdersData() {
+        let ordersData = Object.values(shoppingCartItemMapState).map((product) => {
+            return {
+                "quantity": product.quantity,
+                "productId": product.productId,
+                "product": product.product
+            }
+        })
+        dispatch(addedToOrders(ordersData))
+        dispatch(getOrders())
     }
 
 
@@ -59,6 +72,7 @@ export default function ShoppingCartItems() {
         <>
             <div className="wrapper">
                 {data}
+                <button onClick={addedToOrdersData}>Order</button>
             </div>
         </>
     )

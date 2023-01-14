@@ -1,12 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import transformCartItemData from "../../pages/transformCartItem";
-import { addProductAndEnlargeQuantityRequest, addProductItemInShoppingCart, changeProductQuantityRequest, deleteCartItem, getShoppingCartDataRequest } from "./shoppingCartAPI";
+import { addedToOrdersRequest, addProductAndEnlargeQuantityRequest, addProductItemInShoppingCart, changeProductQuantityRequest, deleteCartItem, getOrdersRequest, getShoppingCartDataRequest } from "./shoppingCartAPI";
 
 const initialState = {
     saveDeleteCartId: [],
     shoppingCartItemMap: {},
     errorMassage: ''
 }
+
+export const addedToOrders = createAsyncThunk(
+    'shoppingCart/addedToOrders',
+    async (ordersData, { rejectWithValue, dispatch }) => {
+        let result = await addedToOrdersRequest(ordersData)
+        return result.data
+    }
+)
+
+export const getOrders = createAsyncThunk(
+    'shoppingCart/getOrders',
+    async (_, { rejectWithValue, dispatch }) => {
+        let result = await getOrdersRequest()
+        console.log(result.data,'aaaaaaaaa');
+    }
+)
 
 export const deleteCart = createAsyncThunk(
     'shoppingCart/deleteCart',
@@ -28,7 +44,7 @@ export const addProductInShoppingCart = createAsyncThunk(
     "shoppingCart/addProductInShoppingCart",
     async (id, { rejectWithValue, dispatch }) => {
         let data = await addProductItemInShoppingCart(id)
-        // return data.data
+        return data.data
     }
 )
 
@@ -85,7 +101,6 @@ const shoppingCartReducer = createSlice({
                 state.status = 'loading';
             })
             .addCase(changeProductQuantity.fulfilled, (state, action) => {
-                console.log(action.payload, 'actionaaaaa');
                 state.shoppingCartItemMap[action.payload.productId] = action.payload
                 state.status = 'ok'
             })

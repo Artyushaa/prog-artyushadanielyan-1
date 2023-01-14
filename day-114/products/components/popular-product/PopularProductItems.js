@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductInShoppingCart, addProductAndEnlargeQuantity } from '../../features/shoppingCart/shoppingCartSlice';
 import MyApp from '../../pages';
 import PopularProductFilterItem from './PopularProductFilter';
 
 export default function PopularProductsItem(props) {
+
+    const [active, setActive] = useState(false)
 
     const { products, error } = props
 
@@ -47,7 +49,11 @@ export default function PopularProductsItem(props) {
                                         <span className="popular-products--color-green">{product.price + "$"} <span
                                             className="popular-products__discount-price">$32.0</span></span>
                                     </div>
-                                    <button disabled={false} onClick={() => {
+                                    <button disabled={active} onClick={() => {
+                                        setActive(true)
+                                        setTimeout(() => {
+                                            setActive(false)
+                                        },1000)
                                         if (shoppingCartItemMapState[product.productId]) {
                                             dispatch(addProductAndEnlargeQuantity({ quantity: shoppingCartQuantity(product?.productId), id: shoppingCartItemMapState[product.productId] }))
                                         } else {

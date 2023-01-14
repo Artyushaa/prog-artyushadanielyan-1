@@ -7,5 +7,6 @@ export default function transformCartItemData(data) {
         quantity: data.quantity,
         cartId: data.cartId,
         productId: data.productId,
+        product: data.product
     }
 }
