@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import shoppingCartReducer from '../features/ShoppingCartItems/shoppingCartSlice';
+import shoppingCartReducer from '../features/ShoppingCart/shoppingCartSlice';
 import filterSlice from '../features/product-filter/productFilterSlice';
 import { createWrapper } from 'next-redux-wrapper';
 

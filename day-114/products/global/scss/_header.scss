@@ -274,7 +274,7 @@
 .profile__action {
     width: 25%;
     height: auto;
-    // border: 1px solid red;
+    border: 1px solid red;
     position: relative;
 }
 
@@ -287,6 +287,16 @@
 
 .profile__action:nth-child(3) {
     width: 20%;
+}
+
+.profile__action__quantity {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: 1px solid blue;
+    position: absolute;
+    top: 0;
+    left: 10px;
 }
 
 .profile__action:first-child:after {
@@ -323,22 +333,22 @@
     font-size: 1.2rem;
 }
 
-.profile__action:nth-child(3):after {
-    content: "2";
-    background-color: #3BB77E;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 26%;
-    height: auto;
-    padding: 2px;
-    left: 15px;
-    top: -5px;
-    position: absolute;
-    border-radius: 50%;
-    font-size: 1.2rem;
-}
+// .profile__action:nth-child(3):after {
+//     content: "2";
+//     background-color: #3BB77E;
+//     color: white;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 26%;
+//     height: auto;
+//     padding: 2px;
+//     left: 15px;
+//     top: -5px;
+//     position: absolute;
+//     border-radius: 50%;
+//     font-size: 1.2rem;
+// }
 
 .header__department {
     width: 100%;

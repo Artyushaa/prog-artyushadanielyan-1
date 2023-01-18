@@ -155,7 +155,7 @@ export async function getOrdersRequest() {
     let response = await axios.get('https://420.canamaster.net/order/rest/sales/1/10?date=3&status=&search=', {
         headers: { "Authorization": `Bearer ${token}` }
     });
-
+    
     return {
         data: response.data.sales,
         status: response.status,

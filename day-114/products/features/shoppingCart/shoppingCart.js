@@ -8,8 +8,8 @@ import { getShoppingCartData } from './shoppingCartSlice';
 export default function ShoppingCartItems() {
     const dispatch = useDispatch();
 
-    function handleClickDeleteCart(cartId) {
-        dispatch(deleteCart(cartId))
+    function handleClickDeleteCart(ids) {
+        dispatch(deleteCart(ids))
     }
 
     function handleProductAmountChange(data) {
@@ -19,7 +19,7 @@ export default function ShoppingCartItems() {
     const shoppingCartItemMapState = useSelector((state) => state.shoppingCart.shoppingCartItemMap)
 
     function shoppingCartQuantity(id) {
-        return shoppingCartItemMapState[id].quantity
+        return shoppingCartItemMapState[id]?.quantity
     }
 
     function addedToOrdersData() {
@@ -31,12 +31,11 @@ export default function ShoppingCartItems() {
             }
         })
         dispatch(addedToOrders(ordersData))
-        dispatch(getOrders())
     }
 
 
     let data = Object.values(shoppingCartItemMapState).map(el => {
-        return <div className="shoppingCart">
+        return <div className="shoppingCart" key={el.productId}>
             <input type="checkbox" />
             <div className="shoppingCart__pictured-container">
                 <img src={el.image} className="shoppingCart__pictured"></img>
@@ -57,7 +56,7 @@ export default function ShoppingCartItems() {
                     }</p>
 
                     <button onClick={() => {
-                        handleClickDeleteCart(el.cartId)
+                        handleClickDeleteCart({cartId: el.cartId, productId: el.productId})
                     }} className="shoppingCart__delete">Delete</button>
                 </div>
             </div>

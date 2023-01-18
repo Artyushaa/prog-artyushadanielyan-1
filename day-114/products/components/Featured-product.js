@@ -144,9 +144,8 @@ export default function FeaturedProduct() {
                         </li>
                     </ul>
                     <div className="featured-categories__btn-container">
-                        <button className="featured-categories__left-btn" onClick={moveToRight}><i className="fa-solid fa-arrow-left"></i></button>
-                        <button className="featured-categories__right-btn" onClick={moveToLeft}><i
-                            className="fa-solid fa-arrow-right right"></i></button>
+                        <button className="featured-categories__left-btn" onClick={moveToRight}>←</button>
+                        <button className="featured-categories__right-btn" onClick={moveToLeft}>→</button>
                     </div>
                 </div>
 

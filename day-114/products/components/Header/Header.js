@@ -1,7 +1,17 @@
 import Link from "next/link";
+import { useSelector } from 'react-redux';
 import { DropDownHome, DropDownPage, DropDownShop } from "./menuBar";
 
 export default function Header() {
+
+    const shoppingCartItemMapState = useSelector((state) => state.shoppingCart.shoppingCartItemMap)
+    for (const key in object) {
+        if (Object.hasOwnProperty.call(object, key)) {
+            const element = object[key];
+            
+        }
+    }
+
     return (
         <>
             <header className="header">
@@ -34,7 +44,7 @@ export default function Header() {
 
                 <div className="header__main">
                     <div className="header__main__logo">
-                        <Link href="/"><img src="img/icons/logo.svg" alt="" className="header__main__svg" /></Link>
+                        <Link href="/"><img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/logo.svg" alt="" className="header__main__svg" /></Link>
                     </div>
                     <div className="header__main__search">
                         <form action="#" className="header__search-container">
@@ -48,28 +58,29 @@ export default function Header() {
                     <div className="profile">
                         <div className="profile__action">
                             <div href="#" className="profile__link">
-                                <img src="img/icons/icon-compare.svg" alt="" />
+                                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-compare.svg" alt="" />
                                 <Link href="#" className="profile__link">Compare</Link>
                             </div>
                         </div>
 
                         <div className="profile__action">
                             <div href="#" className="profile__link">
-                                <img src="img/icons/icon-heart.svg" alt="" />
+                                <img src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-heart.svg" alt="" />
                                 <a href="#" className="profile__link">Wishlist</a>
                             </div>
                         </div>
 
                         <div className="profile__action">
                             <div href="#" className="profile__link">
-                                <img src="img/icons/icon-cart.svg" alt="" />
+                                <img src="	https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-cart.svg" alt="" />
                                 <Link href="/shoppingCart/shoppingCartPages" className="profile__link">Cart</Link>
+                                <div className="profile__action__quantity"></div>
                             </div>
                         </div>
 
                         <div className="profile__action">
                             <div href="#" className="profile__link">
-                                <img src="img/icons/icon-user.svg" alt="" />
+                                <img src="	https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-user.svg" alt="" />
                                 <Link href="/src/Register" className="profile__link">Account</Link>
                             </div>
                         </div>
@@ -79,9 +90,9 @@ export default function Header() {
                 <div className="header__department">
                     <div className="header__brows__categories">
                         <img src="img/icons/four-squares.svg" alt="" className="header__square" />
-                        {/* <select name="" id="" className="header__categorise-text">
+                        <select name="" id="" className="header__categorise-text">
                             <option value="">Brows All Categories</option>
-                        </select> */}
+                        </select>
                     </div>
 
                     <ul className="department">

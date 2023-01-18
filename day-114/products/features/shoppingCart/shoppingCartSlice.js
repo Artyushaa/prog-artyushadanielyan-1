@@ -5,7 +5,8 @@ import { addedToOrdersRequest, addProductAndEnlargeQuantityRequest, addProductIt
 const initialState = {
     saveDeleteCartId: [],
     shoppingCartItemMap: {},
-    errorMassage: ''
+    errorMassage: '',
+    orderData: []
 }
 
 export const addedToOrders = createAsyncThunk(
@@ -20,15 +21,15 @@ export const getOrders = createAsyncThunk(
     'shoppingCart/getOrders',
     async (_, { rejectWithValue, dispatch }) => {
         let result = await getOrdersRequest()
-        console.log(result.data,'aaaaaaaaa');
+        return result.data
     }
 )
 
 export const deleteCart = createAsyncThunk(
     'shoppingCart/deleteCart',
-    async (cartId, { rejectWithValue, dispatch }) => {
-        let result = deleteCartItem(cartId)
-        return result
+    async (ids, { rejectWithValue, dispatch }) => {
+        let result = await deleteCartItem(ids.cartId)
+        return ids.productId
     }
 )
 
@@ -88,7 +89,7 @@ const shoppingCartReducer = createSlice({
             //     }
             // })
             .addCase(deleteCart.fulfilled, (state, action) => {
-                state.saveDeleteCartId = action.payload
+                delete state.shoppingCartItemMap[action.payload]
             })
             .addCase(getProduct1.pending, (state) => {
                 state.status = 'loading';
@@ -122,6 +123,16 @@ const shoppingCartReducer = createSlice({
                 if (action.error.message) {
                     state.errorMassage = action.error.message
                 }
+            })
+            .addCase(getOrders.pending, (state, action) => {
+                state.status = 'loading'
+            })
+            .addCase(getOrders.fulfilled, (state, action) => {
+                state.orderData = action.payload
+                state.status = 'ok'
+            })
+            .addCase(getOrders.rejected, (state, action) => {
+                console.log(action.payload, 'error');
             })
     }
 })
