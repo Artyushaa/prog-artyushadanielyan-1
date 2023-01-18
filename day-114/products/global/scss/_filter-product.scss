@@ -1,0 +1,58 @@
+.filter-product {
+    width: 20%;
+    height: auto;
+    // border: 1px solid;
+    margin-top: 10px;
+ 
+
+    &__container {
+        width: 100%;
+        height: auto;
+        // border: 1px solid;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__name-container {
+        width: 100%;
+        height: auto;
+        // border: 1px solid;
+        display: flex;
+        align-items: center;
+    }
+
+    &__name {
+        font-size: 1.6rem;
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+
+    &__radio {
+        margin-top: 20px;
+        margin-left: auto;
+    }
+
+    &__cart-container {
+        width: 80%;
+        height: auto;
+        // border: 1px solid red;
+        display: flex;
+        // grid-row: 1fr 1fr 1fr;
+        // grid-column: 4fr;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    &__cart {
+        width: 19%;
+        height: auto;
+        border: 1px solid #ececec;
+        border-radius: 1.6rem;
+        position: relative;
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}

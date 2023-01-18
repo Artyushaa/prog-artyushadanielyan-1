@@ -1,0 +1,133 @@
+.shoppingCart {
+    width: 65%;
+    height: auto;
+    // border: 1px solid;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0 20px 0px;
+
+    &__container {
+        width: 65%;
+        height: auto;
+        border: 1px solid #ececec;
+        margin: 20px;
+    }
+
+    &__markAllProduct {
+        width: 100%;
+        height: auto;
+        // border: 1px solid;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 25px;
+        border-radius: 1.8rem;
+        background-color: #ececec;
+    }
+
+    &__markAllProduct__title {
+        font-size: 1.6rem;
+        font-family: "Lato", sans-serif;
+        font-weight: 600;
+        line-height: 1.5;
+        color: #212529;
+        display: flex;
+        justify-content: space-between;
+        width: 10%;
+    }
+
+    &__markAllProduct__item-container {
+        list-style: none;
+        // border: 1px solid;
+        display: flex;
+        justify-content: space-evenly;
+        width: 40%;
+    }
+    &__markAllProduct__item{
+        background-color: #ececec;
+        padding: 18px 0;
+        font-family: "Quicksand", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: #253d4e;
+    }
+
+    &__pictured-container {
+        width: 13%;
+        height: auto;
+        // border: 1px solid;
+        padding: 10px;
+        border-radius: 1.6rem;
+        border: 1px solid #ececec;
+    }
+
+    &__pictured {
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    &__info-container {
+        width: 75%;
+        height: auto;
+        // border: 1px solid;
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+    }
+
+    &__purchase-information {
+        width: 45%;
+        display: flex;
+        // border: 1px solid;
+        justify-content: space-evenly;
+    }
+
+    &__name {
+        width: 50%;
+        font-size: 1.6rem;
+        font-family: "Quicksand", sans-serif;
+        color: #253d4e;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 20px;
+    }
+
+    &__price {
+        font-size: 2.4rem;
+        font-family: "Quicksand", sans-serif;
+        color: #253d4e;
+        font-weight: 700;
+        line-height: 1.2;
+        color: #7e7e7e;
+        margin-top: 25px;
+    }
+
+    &__price-subtotal {
+        font-size: 2.4rem;
+        font-family: "Quicksand", sans-serif;
+        color: #253d4e;
+        font-weight: 700;
+        line-height: 1.2;
+        color: #3bb77e;
+        margin-top: 25px;
+    }
+
+    &__quantity {
+        width: 20%;
+        height: 7vh;
+        padding-left: 25px;
+        border-radius: 0.5rem;
+        border: 2px solid #3bb77e;
+        margin-top: 10px;
+    }
+
+    &__delete {
+        width: 25%;
+        height: 7vh;
+        border-radius: 0.5rem;
+        background-color: #253d4e;
+        border: none;
+        color: #3bb77e;
+        margin-top: 10px;
+    }
+}

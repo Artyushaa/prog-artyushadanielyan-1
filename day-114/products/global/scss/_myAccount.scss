@@ -1,0 +1,28 @@
+.myAccount {
+    width: 80%;
+    height: auto;
+    border: 1px solid;
+    margin: auto;
+    margin-top: 150px;
+
+    &__navigation-list-container {
+        width: 40%;
+        height: auto;
+        border: 1px solid;
+    }
+
+    &__navigation-list {
+        width: 100%;
+        height: auto;
+        border: 1px solid;
+        // padding: 25px;
+    }
+
+    &__navigation-list {
+        font-size: 16px;
+        color: #7e7e7e;
+        padding: 20px 35px;
+        font-family: "Quicksand", sans-serif;
+        font-weight: 700;
+    }
+}
